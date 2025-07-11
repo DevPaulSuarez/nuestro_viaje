@@ -259,6 +259,7 @@ class _Puzzle3x3State extends State<Puzzle3x3> {
                       ),
                       SizedBox(height: 16),
                       Text(
+                        'Puzzle del Día 3 completado 🌄\n\n'
                         'Hoy viajamos al pasado, a ese domingo de enero de 2017, en aquel rincón tranquilo de Miraflores.\n\n'
                         'Recuerdo ese día como si el tiempo se hubiera detenido solo para nosotros. Éramos dos almas, aún sin saber todo lo que compartiríamos.\n\n'
                         'Así como el volcán de “Lava” esperó con paciencia a alguien que lo comprendiera y amara tal como era, yo también aprendí a esperar.\n\n'
