@@ -52,10 +52,7 @@ class PantallaBienvenida extends StatelessWidget {
               SizedBox(height: 20),
               Text(
                 'Este viaje no es solo de recuerdos,\nsino una forma de revivir todo lo que hemos compartido...',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black87,
-                ),
+                style: TextStyle(fontSize: 18, color: Colors.black87),
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 40),
@@ -71,10 +68,7 @@ class PantallaBienvenida extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => PantallaPuzzles()),
                   );
                 },
-                child: Text(
-                  'Comenzar 💫',
-                  style: TextStyle(fontSize: 18),
-                ),
+                child: Text('Comenzar 💫', style: TextStyle(fontSize: 18)),
               ),
             ],
           ),
@@ -100,7 +94,7 @@ class _PantallaPuzzlesState extends State<PantallaPuzzles> {
         setState(() {});
         _controller.play();
         _controller.setLooping(true);
-        _controller.setVolume(0);
+        //_controller.setVolume(0);
       });
   }
 
@@ -120,9 +114,7 @@ class _PantallaPuzzlesState extends State<PantallaPuzzles> {
 
     return Scaffold(
       backgroundColor: Colors.pink.shade50,
-      appBar: AppBar(
-        title: Text('Faltan $diasRestantes días 💌'),
-      ),
+      appBar: AppBar(title: Text('Faltan $diasRestantes días 💌')),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -267,23 +259,19 @@ class _Puzzle3x3State extends State<Puzzle3x3> {
                       ),
                       SizedBox(height: 16),
                       Text(
-                        'Puzzle del Día 2 completado 💖\n\n'
-                        '¿Recuerdas este momento? No fue una simple foto,\n'
-                        'fue un instante donde mi corazón se sintió completo.\n\n'
-                        'Tu abrazo a él no es solo ternura,\n'
-                        'es amor puro, sin condiciones, sin palabras, solo cariño.\n\n'
-                        'A veces lo veo mirarte con esos ojitos brillantes,\n'
-                        'como si supiera que está seguro mientras tú estés cerca.\n\n'
-                        'Gracias por quererlo como yo lo quiero, por hacer que nuestra familia —aunque peluda—\n'
-                        'sea más cálida, más feliz, más nuestra.\n\n'
-                        'Faltan pocos días para celebrar este amor que nos une a los tres 💌',
+                        'Hoy viajamos al pasado, a ese domingo de enero de 2017, en aquel rincón tranquilo de Miraflores.\n\n'
+                        'Recuerdo ese día como si el tiempo se hubiera detenido solo para nosotros. Éramos dos almas, aún sin saber todo lo que compartiríamos.\n\n'
+                        'Así como el volcán de “Lava” esperó con paciencia a alguien que lo comprendiera y amara tal como era, yo también aprendí a esperar.\n\n'
+                        'Desde entonces, la melodía de mi vida tiene tu voz, tu risa, tu abrazo.\n\n'
+                        'Gracias por estos años llenos de momentos mágicos, por caminar conmigo cada día, por seguir construyendo juntos este viaje que no deja de sorprenderme.\n\n'
+                        'Faltan pocos días para nuestro aniversario, pero ya siento que celebrarte es parte de cada instante que respiro 💖',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 18,
                           fontFamily: 'Georgia',
                           fontStyle: FontStyle.italic,
                           color: Colors.deepPurple.shade800,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                       SizedBox(height: 24),
                       ElevatedButton(
@@ -293,7 +281,10 @@ class _Puzzle3x3State extends State<Puzzle3x3> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.pinkAccent,
                           foregroundColor: Colors.white,
-                          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 24,
+                            vertical: 12,
+                          ),
                         ),
                         child: Text('Seguir 💫'),
                       ),
@@ -322,7 +313,9 @@ class _Puzzle3x3State extends State<Puzzle3x3> {
       ),
       child: GridView.builder(
         physics: NeverScrollableScrollPhysics(),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+        ),
         itemCount: piezas.length,
         itemBuilder: (context, index) {
           int piezaIndex = piezas[index];
@@ -355,7 +348,9 @@ class _Puzzle3x3State extends State<Puzzle3x3> {
                   ),
                 ),
                 if (piezaIndex == 8)
-                  Container(color: Color.fromARGB(255, 236, 155, 155)), // pieza vacía rosada
+                  Container(
+                    color: Color.fromARGB(255, 236, 155, 155),
+                  ), // pieza vacía rosada
               ],
             ),
           );
