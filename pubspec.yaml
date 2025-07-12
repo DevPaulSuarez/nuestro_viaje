@@ -58,6 +58,7 @@ flutter:
     - assets/viajeLima.jpg
     - assets/corazon.png
     - assets/ositos.mp4
+    - assets/corazones_bombenado.gif
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

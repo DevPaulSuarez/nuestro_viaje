@@ -259,13 +259,13 @@ class _Puzzle3x3State extends State<Puzzle3x3> {
                       ),
                       SizedBox(height: 16),
                       Text(
-                        'Puzzle del Día 3 completado 🌄\n\n'
-                        'Hoy viajamos al pasado, a ese domingo de enero de 2017, en aquel rincón tranquilo de Miraflores.\n\n'
-                        'Recuerdo ese día como si el tiempo se hubiera detenido solo para nosotros. Éramos dos almas, aún sin saber todo lo que compartiríamos.\n\n'
-                        'Así como el volcán de “Lava” esperó con paciencia a alguien que lo comprendiera y amara tal como era, yo también aprendí a esperar.\n\n'
-                        'Desde entonces, la melodía de mi vida tiene tu voz, tu risa, tu abrazo.\n\n'
-                        'Gracias por estos años llenos de momentos mágicos, por caminar conmigo cada día, por seguir construyendo juntos este viaje que no deja de sorprenderme.\n\n'
-                        'Faltan pocos días para nuestro aniversario, pero ya siento que celebrarte es parte de cada instante que respiro 💖',
+                        'El 14 de febrero de 2017, tú me sorprendiste de una forma única.\n\n'
+                        'Preparaste una decoración con globos y una cena especial para San Valentín,\n'
+                        'algo que nadie jamás había hecho por mí, y sabes que no suelo esperar mucho.\n\n'
+                        'Esa sorpresa tocó mi corazón y marcó un antes y un después en nuestra historia.\n\n'
+                        'Hoy, 10 años después, celebro ese detalle y todo lo que hemos construido juntos.\n\n'
+                        'Gracias por estos años de amor, por cada instante compartido y por ser mi compañera de vida.\n'
+                        'Te amo con todo mi corazón.',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 18,
@@ -275,6 +275,12 @@ class _Puzzle3x3State extends State<Puzzle3x3> {
                         ),
                       ),
                       SizedBox(height: 24),
+                      Image.asset(
+                      'assets/corazones_bombenado.gif',
+                      width: 150,
+                      height: 150,
+                      fit: BoxFit.contain,
+                    ),
                       ElevatedButton(
                         onPressed: () {
                           Navigator.pop(context);
