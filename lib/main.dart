@@ -8,7 +8,8 @@ void main() {
 int calcularPuzzlesDelDia() {
   final aniversario = DateTime(2025, 7, 13);
   final hoy = DateTime.now();
-  int diasRestantes = aniversario.difference(hoy).inDays;
+  final hoySinHora = DateTime(hoy.year, hoy.month, hoy.day); // 🔹 Se elimina la hora
+  int diasRestantes = aniversario.difference(hoySinHora).inDays;
   if (diasRestantes < 0) diasRestantes = 0;
   return diasRestantes;
 }
@@ -94,7 +95,7 @@ class _PantallaPuzzlesState extends State<PantallaPuzzles> {
         setState(() {});
         _controller.play();
         _controller.setLooping(true);
-        //_controller.setVolume(0);
+        _controller.setVolume(0);
       });
   }
 
@@ -211,6 +212,7 @@ class _Puzzle3x3State extends State<Puzzle3x3> {
   }
 
   bool completo() {
+    return true;
     for (int i = 0; i < piezas.length; i++) {
       if (piezas[i] != i) return false;
     }
@@ -241,7 +243,7 @@ class _Puzzle3x3State extends State<Puzzle3x3> {
                 child: Container(
                   padding: EdgeInsets.all(24),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.75),
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(color: Colors.pinkAccent, width: 2),
                   ),
@@ -249,7 +251,7 @@ class _Puzzle3x3State extends State<Puzzle3x3> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        '💖 ¡Lo lograste!',
+                        '💖 ¡Puedes Conseguir Lo Que Te Propongas!',
                         style: TextStyle(
                           fontSize: 26,
                           fontWeight: FontWeight.bold,
@@ -258,28 +260,57 @@ class _Puzzle3x3State extends State<Puzzle3x3> {
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(height: 16),
-                      Text(
-                        'Espero que te divirta estos puzzles, Feliciadades Por resolver el 4to\n\n'
-                        'El 14 de febrero de 2017, tú me sorprendiste de una forma única.\n\n'
-                        'Preparaste una decoración con globos y una cena especial para San Valentín,\n'
-                        'algo que nadie jamás había hecho por mí, y sabes que no suelo esperar mucho.\n\n'
-                        'Esa sorpresa tocó mi corazón y marcó un antes y un después en nuestra historia.\n\n'
-                        'Hoy, 10 años después, celebro ese detalle y todo lo que hemos construido juntos.\n\n'
-                        'Gracias por estos años de amor, por cada instante compartido y por ser mi compañera de vida.\n'
-                        'Te amo con todo mi corazón.',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Georgia',
-                          fontStyle: FontStyle.italic,
-                          color: Colors.deepPurple.shade800,
-                        ),
-                      ),
+                    Stack(
+  alignment: Alignment.center,
+  children: [
+    // Fondo: GIF animado
+    Positioned.fill(
+      child: Image.asset(
+        'assets/stitch.gif',
+                              width: 250,
+                      height: 250,
+                      fit: BoxFit.contain,
+        //fit: BoxFit.cover,
+      ),
+    ),
+
+    // Capa semi-transparente opcional para mejorar la legibilidad del texto
+    Positioned.fill(
+      child: Container(
+        color: Colors.white.withOpacity(0.6),
+      ),
+    ),
+
+    // Texto encima
+    Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 40),
+      child: SingleChildScrollView(
+        child: Text(
+          'Espero que te divierta estos puzzles, Felicidades por resolver el 4to\n\n'
+          'El 14 de febrero de 2017, tú me sorprendiste de una forma única.\n\n'
+          'Preparaste una decoración con globos y una cena especial para San Valentín,\n'
+          'algo que nadie jamás había hecho por mí, y sabes que no suelo esperar mucho.\n\n'
+          'Esa sorpresa tocó mi corazón y marcó un antes y un después en nuestra historia.\n\n'
+          'Hoy, 10 años después, celebro ese detalle y todo lo que hemos construido juntos.\n\n'
+          'Gracias por estos años de amor, por cada instante compartido y por ser mi compañera de vida.\n'
+          'Te amo con todo mi corazón.',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 18,
+            fontFamily: 'Georgia',
+            fontStyle: FontStyle.italic,
+            color: Colors.deepPurple.shade800,
+          ),
+        ),
+      ),
+    ),
+  ],
+),
                       SizedBox(height: 24),
                       Image.asset(
                       'assets/corazones_bombenado.gif',
-                      width: 150,
-                      height: 150,
+                      width: 250,
+                      height: 250,
                       fit: BoxFit.contain,
                     ),
                       ElevatedButton(
