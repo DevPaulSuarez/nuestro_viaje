@@ -259,6 +259,7 @@ class _Puzzle3x3State extends State<Puzzle3x3> {
                       ),
                       SizedBox(height: 16),
                       Text(
+                        'Espero que te divirta estos puzzles, Feliciadades Por resolver el 4to\n\n'
                         'El 14 de febrero de 2017, tú me sorprendiste de una forma única.\n\n'
                         'Preparaste una decoración con globos y una cena especial para San Valentín,\n'
                         'algo que nadie jamás había hecho por mí, y sabes que no suelo esperar mucho.\n\n'
