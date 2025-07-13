@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+import 'package:nuestro_viaje/Pantallas/carta_animada.dart';
+import 'package:nuestro_viaje/Pantallas/renovacion_emocional.dart';
+import 'package:nuestro_viaje/Pantallas/rasca.dart';
+import 'package:nuestro_viaje/Pantallas/videos.dart';
+
 
 void main() {
   runApp(NuestroViajeApp());
@@ -42,7 +47,7 @@ class PantallaBienvenida extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Bienvenida, mi amor 💖',
+                'Feliz Aniversario Mi Amor 💖',
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
@@ -51,10 +56,25 @@ class PantallaBienvenida extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 20),
-              Text(
-                'Este viaje no es solo de recuerdos,\nsino una forma de revivir todo lo que hemos compartido...',
-                style: TextStyle(fontSize: 18, color: Colors.black87),
-                textAlign: TextAlign.center,
+              // Texto clickeable
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PantallaSorpresa()),
+                  );
+                },
+                child: Text(
+                  """Hoy celebramos una década juntos…
+10 años de risas, aprendizajes, aventuras y amor real.
+Gracias por cada día, por tu paciencia, tu compañía y por hacerme sentir en casa.
+Después de todo este tiempo, no solo sigo eligiéndote…
+sueño contigo en el siguiente paso:
+crear una familia, tener hijos, construir un hogar lleno de pequeñas voces y grandes abrazos.
+Porque si el futuro es contigo, lo quiero todo.""",
+                  style: TextStyle(fontSize: 18, color: Colors.black87),
+                  textAlign: TextAlign.center,
+                ),
               ),
               SizedBox(height: 40),
               ElevatedButton(
@@ -69,7 +89,7 @@ class PantallaBienvenida extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => PantallaPuzzles()),
                   );
                 },
-                child: Text('Comenzar 💫', style: TextStyle(fontSize: 18)),
+                child: Text('Busca los Easter Egg 💫', style: TextStyle(fontSize: 18)),
               ),
             ],
           ),
@@ -79,76 +99,47 @@ class PantallaBienvenida extends StatelessWidget {
   }
 }
 
-class PantallaPuzzles extends StatefulWidget {
-  @override
-  _PantallaPuzzlesState createState() => _PantallaPuzzlesState();
-}
 
-class _PantallaPuzzlesState extends State<PantallaPuzzles> {
-  late VideoPlayerController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = VideoPlayerController.asset('assets/ositos.mp4')
-      ..initialize().then((_) {
-        setState(() {});
-        _controller.play();
-        _controller.setLooping(true);
-        _controller.setVolume(0);
-      });
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
+class PantallaPuzzles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int diasRestantes = calcularPuzzlesDelDia();
-
     if (diasRestantes == 0) {
       return PantallaSorpresaFinal();
     }
 
     return Scaffold(
-      backgroundColor: Colors.pink.shade50,
-      appBar: AppBar(title: Text('Faltan $diasRestantes días 💌')),
-      body: SingleChildScrollView(
+      appBar: AppBar(
+        title: Text('Faltan $diasRestantes días 💌'),
+      ),
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 20),
-
-            if (_controller.value.isInitialized)
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  height: 180,
-                  child: VideoPlayer(_controller),
-                ),
-              ),
-
-            SizedBox(height: 16),
-
             Text(
-              'Reto: Resolver el puzzle para ver el mensaje:',
+              'Reto Resolver El puzzle Para Ver El Mensaje:',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.pink.shade800,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-
             SizedBox(height: 20),
-
             Puzzle3x3(imagePath: 'assets/viajeLima.jpg'),
 
             SizedBox(height: 40),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PantallaSorpresaFinal()),
+                );
+              },
+              child: Text('Saltar a la sorpresa 🎁'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.pinkAccent,
+                foregroundColor: Colors.white,
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              ),
+            ),
           ],
         ),
       ),
@@ -157,25 +148,73 @@ class _PantallaPuzzlesState extends State<PantallaPuzzles> {
 }
 
 class PantallaSorpresaFinal extends StatelessWidget {
+  final String mensaje = 
+    '🎉 ¡Feliz aniversario!\nGracias por estos años juntos,\npor cada instante compartido...\nTe amo con todo mi corazón.';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink.shade50,
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Text(
-            '🎉 ¡Feliz aniversario!\nAquí está tu sorpresa 💖',
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              color: Colors.pinkAccent,
-            ),
-            textAlign: TextAlign.center,
+  backgroundColor: Colors.pink.shade50,
+  body: Column(
+    children: [
+      // GIF superior
+
+      GestureDetector(
+  onTap: () {
+      Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => PantallaVideos(),
+      ),
+    );
+  },
+  child: SizedBox(
+  height: 250, // Aumenta la altura para que sea más grande y baje más
+  width: double.infinity,
+  child: Align(
+    alignment: Alignment.bottomCenter, // Cambia a bottomCenter para que baje
+    child: Image.asset(
+      "assets/arriba.gif",
+      fit: BoxFit.contain, 
+      height: 250,  // Controla el tamaño real del GIF aquí
+    ),
+  ),
+),
+),
+
+
+
+      // Carta animada centrada
+      Expanded(
+        child: Center(
+          child: SobreAnimado(
+            mensaje: "El futuro es un lienzo en blanco, y cada día a tu lado es una pincelada de sueños y promesas por cumplir.",
           ),
         ),
       ),
+
+      // GIF inferior
+      // Suponiendo que este es el widget que muestra el GIF inferior:
+GestureDetector(
+  onTap: () {
+      Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => RenovacionEmocional(),
+      ),
     );
+  },
+  child: SizedBox(
+    height: 120,
+    width: double.infinity,
+    child: Image.asset(
+      "assets/abajo.gif",
+      fit: BoxFit.contain,
+      alignment: Alignment.bottomCenter,
+    ),
+  ),
+),
+    ],
+  ),
+);
   }
 }
 
@@ -212,7 +251,6 @@ class _Puzzle3x3State extends State<Puzzle3x3> {
   }
 
   bool completo() {
-    return true;
     for (int i = 0; i < piezas.length; i++) {
       if (piezas[i] != i) return false;
     }

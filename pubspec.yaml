@@ -1,4 +1,4 @@
-name: nuestro_viaje1
+name: nuestro_viaje
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -32,6 +32,7 @@ dependencies:
     sdk: flutter
   google_fonts: ^6.2.1
   video_player: ^2.7.2
+  scratcher: ^2.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -60,6 +61,17 @@ flutter:
     - assets/ositos.mp4
     - assets/corazones_bombenado.gif
     - assets/stitch.gif
+    - assets/arriba.gif
+    - assets/abajo.gif
+    - assets/momo.jpg
+    - assets/onerous.gif
+    - assets/tworous.gif
+    - assets/bear.gif
+    - assets/cupon_fondo.png
+    - assets/quisiera.mp4
+    - assets/sabes.mp4
+
+    
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

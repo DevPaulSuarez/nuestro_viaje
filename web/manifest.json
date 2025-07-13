@@ -1,6 +1,6 @@
 {
-    "name": "nuestro_viaje1",
-    "short_name": "nuestro_viaje1",
+    "name": "nuestro_viaje",
+    "short_name": "nuestro_viaje",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
