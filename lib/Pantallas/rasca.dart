@@ -53,7 +53,7 @@ class _PantallaSorpresaState extends State<PantallaSorpresa> {
             children: [
               Scratcher(
                 key: _scratcherKey,
-  brushSize: 25,       // Pincel más pequeño para un raspado más suave
+  brushSize: 25,       // Pincel más pequeño para un raspado más suave que mas hacer 
   threshold: 50,       // Mayor porcentaje para revelar (más difícil)
   color: Colors.grey.shade600,
                 onChange: (value) {
